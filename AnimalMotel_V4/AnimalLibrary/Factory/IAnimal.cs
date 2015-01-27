@@ -12,7 +12,7 @@ namespace AnimalMotel
         double Age { get; set; }
         CategoryType CategoryType { get; set; }
         GenderType GenderType { get; set; }
-        int ID { get; set; }
+        int RadNummer { get; set; }
         string GetAnimalSpecificData { get; set; }
         string AnimalSpecificData();
     }

@@ -15,7 +15,8 @@ namespace AnimalMotel
         private string name;
         private CategoryType categoryType;
         private GenderType genderType;
-        private int id;
+        private int radNummer;
+        private Guid id;
         string getAnimalSpecificData;
 
         #endregion
@@ -57,12 +58,16 @@ namespace AnimalMotel
             set { genderType = value; }
         }
 
-        public int ID
+        public int RadNummer
+        {
+            get { return radNummer; }
+            set { radNummer = value; }
+        }
+        public Guid ID
         {
             get { return id; }
             set { id = value; }
         }
-
 
         #endregion
     }

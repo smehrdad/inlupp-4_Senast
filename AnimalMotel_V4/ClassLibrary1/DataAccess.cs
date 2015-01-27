@@ -12,7 +12,7 @@ namespace AnimalManager
 {
     public class DataAccess
     {
-        System.Configuration.ConnectionStringSettings Con = ConfigurationManager.ConnectionStrings["AnimalDBConnectionString"];
+       System.Configuration.ConnectionStringSettings ConectionString = ConfigurationManager.ConnectionStrings["AnimalDBConnectionString"];
         public void DeleteAnimalData()
         {
 
@@ -20,68 +20,40 @@ namespace AnimalManager
 
         public DataTable LoadAnimalData()
         {
-            string constr = ConfigurationManager.ConnectionStrings["AnimalDBConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            string quary = "SELECT * FROM dbo.Animal;";
+            return RunQuery(quary);
+        }
+
+        public DataTable RunQuery(string quary)
+        {
+            using (SqlConnection connection = new SqlConnection(ConectionString.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM dbo.Animal;";
-                    cmd.Connection = con;
+                    cmd.CommandText = quary;
+                    cmd.Connection = connection;
+                    if (cmd.Connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
                         DataTable dt = new DataTable();
                         sda.Fill(dt);
+                        connection.Close();
                         return dt;
                     }
                 }
             }
         }
 
-
-        //public ListView LoadAnimalData1()
-        //{
-        //    ListView listView1 = new ListView();
-        //    ListView listView = new ListView();
-        //    //ListViewItem lv = new ListViewItem();
-            
-        //    string queryString = "SELECT * FROM dbo.Animal;";
-        //    using (SqlConnection connection = new SqlConnection(Con.ConnectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(queryString, connection);
-        //        connection.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
-
-
-        //        //int i = 0;
-        //        //while (reader.Read())
-        //        //{
-
-        //        //    ListViewItem lv = new ListViewItem(); 
-                          
-        //        //    lv.SubItems.Add(reader.GetGuid(0).ToString());
-        //        //    lv.SubItems.Add(reader.GetString(1));
-        //        //    float age = (float)reader.GetDouble(2);
-        //        //    lv.SubItems.Add(age.ToString());
-        //        //    lv.SubItems.Add(reader.GetString(3));
-        //        //    lv.SubItems.Add(reader.IsDBNull(4) ? string.Empty : reader.GetString(4));
-        //        //    listView1.Items.Add(lv);
-        //        //    //listView.Items.AddRange(new ListViewItem[] { lv });
-        //        //    //System.Threading.Thread.Sleep(2000);
-
-        //        //    //listView.Items.Add(lv);
-        //        //    i++;
-        //        //}
-        //        return listView;
-        //    }
-        //}
         public void SaveAnimalData(string queryString)
         {
-            using (SqlConnection connection = new SqlConnection(Con.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConectionString.ConnectionString))
              using(var command = new SqlCommand(queryString, connection))
    
             {
-                //SqlCommand command = new SqlCommand(queryString, connection);
-                //command.ExecuteNonQueryAsync();
                 connection.Open();
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter();
@@ -91,49 +63,7 @@ namespace AnimalManager
                 
             }
         }
-        //public DataTable LoadAnimalData()
-        //{
-        //    System.Configuration.ConnectionStringSettings connectionString = ConfigurationManager.ConnectionStrings["AnimalDBConnectionString"];
-        //    //string queryString = "SELECT * FROM dbo.Animal;";          
-        //    // using (SqlConnection connection = new SqlConnection(connectionString.ConnectionString))
-        //    // {
-        //    //     SqlCommand command = new SqlCommand(queryString, connection);
-        //    //    connection.Open();
-
-        //    //    SqlDataReader reader = command.ExecuteReader();
-
-        //    //    // Call Read before accessing data.
-        //    //    while (reader.Read())
-        //    //    {
-        //    //        DataTable dt = new DataTable();
-                    
-        //    //        Console.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
-        //    //    }
-
-        //    //}
-
-
-        //    //SqlConnection con = new SqlConnection(connectionString.ConnectionString);
-        //    //SqlDataAdapter ada = new SqlDataAdapter("SELECT * FROM dbo.Animal", con);
-        //    //DataTable dt = new DataTable();
-        //    //var test= ada.Fill(dt);
-
-        //    //for (int i = 0; i < dt.Rows.Count; i++)
-        //    //{
-        //    //    DataRow dr = dt.Rows[i];
-        //    //    ListViewItem listitem = new ListViewItem(dr["Id"].ToString());
-        //    //    listitem.SubItems.Add(dr["name"].ToString());
-        //    //    //listViewListOfRegisteredAnima.Items.Add(listitem);
-        //    //}
-
-
-
-        //    //DataSet dataset = new DataSet();
-
-        //    //var connectionString = ConfigurationManager.ConnectionStrings["CharityManagement"].ConnectionString;
-        //    return null;
-        //}
-
+        
         public void NewRowInAnimal(string id, string name, double age, string gender, string categori, string info)
         {
 
@@ -148,5 +78,11 @@ namespace AnimalManager
         }
 
 
+
+        public DataTable LoadExtraAnimalInfo(string id)
+        {
+            string quary = string.Format("Select * from Mammal where id_fk = '{0}'", id);            
+            return RunQuery(quary);
+        }
     }
 }

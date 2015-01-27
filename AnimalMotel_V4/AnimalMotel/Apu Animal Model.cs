@@ -153,9 +153,15 @@ namespace AnimalMotel
 
         }
 
-        private int CreateID(Animal newAnimal)
+        private int CreateRowNumber(Animal newAnimal)
         {
-            newAnimal.ID = listViewListOfRegisteredAnimals.Items.Count + 1;
+            newAnimal.RadNummer = listViewListOfRegisteredAnimals.Items.Count + 1;
+            return newAnimal.RadNummer;
+
+        }
+        private Guid CreateID(Animal newAnimal)
+        {
+            newAnimal.ID = Guid.NewGuid();
             return newAnimal.ID;
 
         }
@@ -170,6 +176,7 @@ namespace AnimalMotel
                     var nameAndAgeIScorrect = SetNameAndAge(NewAnimal);
                     if (nameAndAgeIScorrect)
                     {
+                        CreateRowNumber(NewAnimal);
                         NewAnimal.AnimalSpecificData();
                         CreateID(NewAnimal);
                         SetGenderType(NewAnimal);
@@ -324,34 +331,27 @@ namespace AnimalMotel
         private void btnAddAnimal_Click(object sender, EventArgs e)
         {
             var newAnimal = CreateNewObject();
-            if (NewAnimal != null)
+            try
             {
-                try
+                if (txbName.Text.Trim().Length > 0 && txbAge.Text.Trim().Length > 0)
                 {
-                    if (txbName.Text.Trim().Length > 0 && txbAge.Text.Trim().Length > 0)
-                    {
-
-                        listViewListOfRegisteredAnimals.Columns.Add("ID", 150);
-                        listViewListOfRegisteredAnimals.Columns.Add("Name", 150);
-                        listViewListOfRegisteredAnimals.Columns.Add("Age", 150);
-                        listViewListOfRegisteredAnimals.Columns.Add("Gender", 150);
-                        listViewListOfRegisteredAnimals.HeaderStyle = ColumnHeaderStyle.Clickable;
-                        string[] row = { NewAnimal.ID.ToString(), txbName.Text, txbAge.Text, NewAnimal.GenderType.ToString() };
-                        ListViewItem item = new ListViewItem(row);
-                        listViewListOfRegisteredAnimals.Items.Add(item);
-
-                    }
-                    listBxSpecialData.Clear();
-                    listBxSpecialData.Text = "Click on the row to view more information about the animals!";
-
-                    ClearAllValue();
-
+                    if (listViewListOfRegisteredAnimals.Items.Count == 0)
+                        AddListViewHeader();
+                    string[] row = { NewAnimal.RadNummer.ToString(), NewAnimal.ID.ToString(), NewAnimal.CategoryType.ToString(), txbName.Text, txbAge.Text, NewAnimal.GenderType.ToString() };
+                    ListViewItem item = new ListViewItem(row);
+                    listViewListOfRegisteredAnimals.Items.Add(item);
 
                 }
-                catch (Exception exc)
-                {
-                    throw (exc);
-                }
+                listBxSpecialData.Clear();
+                listBxSpecialData.Text = "Click on the row to view more information about the animals!";
+
+                ClearAllValue();
+
+
+            }
+            catch (Exception exc)
+            {
+                throw (exc);
             }
         }
 
@@ -556,69 +556,118 @@ namespace AnimalMotel
         private void loadDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listViewListOfRegisteredAnimals.Clear();
+            AddListViewHeader();
 
-            listViewListOfRegisteredAnimals.Columns.Add("ID", 150);
-            listViewListOfRegisteredAnimals.Columns.Add("Name", 150);
-            listViewListOfRegisteredAnimals.Columns.Add("Age", 150);
-            listViewListOfRegisteredAnimals.Columns.Add("Gender", 150);
-            listViewListOfRegisteredAnimals.HeaderStyle = ColumnHeaderStyle.Clickable;
-
-
+            int rowNr = 1;
             DataTable dt = DataAccess.LoadAnimalData();
             foreach (DataRow row in dt.Rows)
             {
                 listViewListOfRegisteredAnimals.Items.Add(new ListViewItem(new string[]{
-              row["ID"].ToString() ,
+               rowNr.ToString(),
+                row["ID"].ToString() ,
+                row["Categori"].ToString(),
               row["Name"].ToString(),
                 row["Age"].ToString(),
+                row["gender"].ToString(),
                 }));
-            }
-   
-            
+                rowNr++;
 
+                Animal newAnimalFromDatabas = new Animal();
+                newAnimalFromDatabas = CreateNewAnimalFromDatabas(row["ID"].ToString(),
+                row["Categori"].ToString(), row["Name"].ToString(),
+                row["Age"].ToString(), row["gender"].ToString(), row["info"].ToString());
+                animalList.Add(newAnimalFromDatabas);
+            }
+
+
+        }
+        private Animal CreateNewAnimalFromDatabas(string id, string categori, string name, string age, string gender, string info)
+        {
+            Animal newAnimalFromDatabas = new Animal();
+            newAnimalFromDatabas.ID = new Guid(id);
+            newAnimalFromDatabas.CategoryType = (CategoryType)System.Enum.Parse(typeof(CategoryType), categori);
+            newAnimalFromDatabas.Name = name;
+            newAnimalFromDatabas.Age = Convert.ToInt32(age);
+            newAnimalFromDatabas.GenderType = (GenderType)System.Enum.Parse(typeof(GenderType), gender);
+
+            if (newAnimalFromDatabas.CategoryType == CategoryType.Mammal)
+            
+            {
+                var extraInfo = DataAccess.LoadExtraAnimalInfo(id);
+                foreach (DataRow row in extraInfo.Rows)
+                {
+                    Mammal newMammal = new Mammal();
+                    var teeth = row["teeth"];
+                    var quarantine = row["quarantine"];
+                    MammalFactory mammalFactory = new MammalFactory();
+                    newAnimalFromDatabas.GetAnimalSpecificData += String.IsNullOrEmpty(info) ? newAnimalFromDatabas.GetAnimalSpecificData = "" : "Important info: " + info;
+
+                    newMammal = mammalFactory.AddNewSpecifications(newMammal, Convert.ToInt32(quarantine), true, Convert.ToInt32(teeth));
+                    newAnimalFromDatabas.GetAnimalSpecificData += newMammal.AnimalSpecificData();
+
+                }
+            }
+            else
+                newAnimalFromDatabas.GetAnimalSpecificData += String.IsNullOrEmpty(info) ? newAnimalFromDatabas.GetAnimalSpecificData = "" : "Important info: " + info;
+
+            return newAnimalFromDatabas;
+        }
+
+        private void AddListViewHeader()
+        {
+            listViewListOfRegisteredAnimals.Columns.Add("Nr", 20);
+            listViewListOfRegisteredAnimals.Columns.Add("ID", 100);
+            listViewListOfRegisteredAnimals.Columns.Add("category", 100);
+            listViewListOfRegisteredAnimals.Columns.Add("Name", 100);
+            listViewListOfRegisteredAnimals.Columns.Add("Age", 50);
+            listViewListOfRegisteredAnimals.Columns.Add("Gender", 50);
+            listViewListOfRegisteredAnimals.HeaderStyle = ColumnHeaderStyle.Clickable;
         }
 
         private void saveDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string sql;
-
-   
-
             for (int i = 0; i < listViewListOfRegisteredAnimals.Items.Count; i++)
             {
-                Guid id = Guid.NewGuid();
                 string name;
                 int age = 0;
-                string categori;
+                string category;
+                string gender = "";
                 string info = "";
-                name = listViewListOfRegisteredAnimals.Items[i].SubItems[1].Text;
-                age = Convert.ToInt32(listViewListOfRegisteredAnimals.Items[i].SubItems[2].Text);
-                categori = listViewListOfRegisteredAnimals.Items[i].SubItems[3].Text;
-                //info = string.IsNullOrEmpty(listViewListOfRegisteredAnimals.Items[i].SubItems[4].Text) ? string.Empty : listViewListOfRegisteredAnimals.Items[i].SubItems[4].Text;
+                Guid id = new Guid(listViewListOfRegisteredAnimals.Items[i].SubItems[1].Text);
+                if (!CheckIfAnimalExists(id))
+                {
+                    category = listViewListOfRegisteredAnimals.Items[i].SubItems[2].Text;
+                    name = listViewListOfRegisteredAnimals.Items[i].SubItems[3].Text;
+                    age = Convert.ToInt32(listViewListOfRegisteredAnimals.Items[i].SubItems[4].Text);
+                    gender = listViewListOfRegisteredAnimals.Items[i].SubItems[5].Text;
+                    sql = "";
+                    sql = "INSERT INTO Animal (id,name,age,categori, gender, info)"
+                        + " VALUES ('" + id + "','" + name + "','" + age + "','" + category + "','" + gender + "','" + info + "')";
 
-                
-                sql = "";
-                sql = "INSERT INTO Animal (id,name,age,categori,info)"
-                    + " VALUES ('" + id + "','" + name + "','" + age + "','" + categori + "','" + info + "')";
+                    DataAccess.SaveAnimalData(sql);
 
-                DataAccess.SaveAnimalData(sql);
-                //clsConnection clsCn = new clsConnection();
-                //SqlConnection cn = null;
-                //SqlCommand cmd = new SqlCommand();
+                    foreach (Animal animal in animalList)
+                    {
+                        if (animal.CategoryType == CategoryType.Mammal && animal.ID == id)
+                        {
+                            Mammal mammal = animal as Mammal;
+                            sql = "INSERT INTO Mammal (id_fk,teeth,quarantine)"
+                                  + " VALUES ('" + animal.ID + "','" + mammal.NumberOFTeeth + "','" + mammal.DagInQuantine + "')";
+                            DataAccess.SaveAnimalData(sql);
+                        }
+                    }
 
-                //clsCn.fnc_ConnectToDB(ref cn);
-
-                //cmd.Connection = cn;
-                //cmd.CommandText = sql;
-                //cmd.ExecuteNonQuery();
-
-
-                //this.Close();
-
+                }
 
             }
         }
-
+        public bool CheckIfAnimalExists(Guid id)
+        {
+            string sql = string.Format("Select * from Animal where id = '{0}'", id);
+            var result = DataAccess.RunQuery(sql);
+            return true ? result.Rows.Count > 0 : false;
+        }
     }
 }
 

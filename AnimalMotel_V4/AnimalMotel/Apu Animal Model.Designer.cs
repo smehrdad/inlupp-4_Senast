@@ -148,7 +148,7 @@
             // labCategory
             // 
             this.labCategory.AutoSize = true;
-            this.labCategory.Location = new System.Drawing.Point(453, 25);
+            this.labCategory.Location = new System.Drawing.Point(355, 38);
             this.labCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCategory.Name = "labCategory";
             this.labCategory.Size = new System.Drawing.Size(73, 20);
@@ -158,7 +158,7 @@
             // labAnimalObject
             // 
             this.labAnimalObject.AutoSize = true;
-            this.labAnimalObject.Location = new System.Drawing.Point(714, 25);
+            this.labAnimalObject.Location = new System.Drawing.Point(817, 49);
             this.labAnimalObject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labAnimalObject.Name = "labAnimalObject";
             this.labAnimalObject.Size = new System.Drawing.Size(107, 20);
@@ -168,7 +168,7 @@
             // labImportantInfo
             // 
             this.labImportantInfo.AutoSize = true;
-            this.labImportantInfo.Location = new System.Drawing.Point(1143, 38);
+            this.labImportantInfo.Location = new System.Drawing.Point(1001, 38);
             this.labImportantInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labImportantInfo.Name = "labImportantInfo";
             this.labImportantInfo.Size = new System.Drawing.Size(108, 20);
@@ -180,11 +180,11 @@
             this.grBoxLitsResult.Controls.Add(this.listBxSpecialData);
             this.grBoxLitsResult.Controls.Add(this.labSpecialData);
             this.grBoxLitsResult.Controls.Add(this.listViewListOfRegisteredAnimals);
-            this.grBoxLitsResult.Location = new System.Drawing.Point(22, 535);
+            this.grBoxLitsResult.Location = new System.Drawing.Point(22, 482);
             this.grBoxLitsResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grBoxLitsResult.Name = "grBoxLitsResult";
             this.grBoxLitsResult.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grBoxLitsResult.Size = new System.Drawing.Size(1383, 348);
+            this.grBoxLitsResult.Size = new System.Drawing.Size(1236, 307);
             this.grBoxLitsResult.TabIndex = 8;
             this.grBoxLitsResult.TabStop = false;
             this.grBoxLitsResult.Text = "List of registered animals with general data";
@@ -192,17 +192,17 @@
             // listBxSpecialData
             // 
             this.listBxSpecialData.Enabled = false;
-            this.listBxSpecialData.Location = new System.Drawing.Point(902, 72);
+            this.listBxSpecialData.Location = new System.Drawing.Point(878, 48);
             this.listBxSpecialData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBxSpecialData.Multiline = true;
             this.listBxSpecialData.Name = "listBxSpecialData";
-            this.listBxSpecialData.Size = new System.Drawing.Size(408, 264);
+            this.listBxSpecialData.Size = new System.Drawing.Size(338, 245);
             this.listBxSpecialData.TabIndex = 16;
             // 
             // labSpecialData
             // 
             this.labSpecialData.AutoSize = true;
-            this.labSpecialData.Location = new System.Drawing.Point(897, 48);
+            this.labSpecialData.Location = new System.Drawing.Point(899, 10);
             this.labSpecialData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labSpecialData.Name = "labSpecialData";
             this.labSpecialData.Size = new System.Drawing.Size(100, 20);
@@ -215,10 +215,10 @@
             this.listViewListOfRegisteredAnimals.FullRowSelect = true;
             this.listViewListOfRegisteredAnimals.GridLines = true;
             this.listViewListOfRegisteredAnimals.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listViewListOfRegisteredAnimals.Location = new System.Drawing.Point(9, 72);
+            this.listViewListOfRegisteredAnimals.Location = new System.Drawing.Point(9, 48);
             this.listViewListOfRegisteredAnimals.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listViewListOfRegisteredAnimals.Name = "listViewListOfRegisteredAnimals";
-            this.listViewListOfRegisteredAnimals.Size = new System.Drawing.Size(882, 264);
+            this.listViewListOfRegisteredAnimals.Size = new System.Drawing.Size(754, 245);
             this.listViewListOfRegisteredAnimals.TabIndex = 12;
             this.listViewListOfRegisteredAnimals.UseCompatibleStateImageBehavior = false;
             this.listViewListOfRegisteredAnimals.View = System.Windows.Forms.View.Details;
@@ -247,7 +247,7 @@
             this.grBoxAnimalSpec.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grBoxAnimalSpec.Name = "grBoxAnimalSpec";
             this.grBoxAnimalSpec.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grBoxAnimalSpec.Size = new System.Drawing.Size(1383, 472);
+            this.grBoxAnimalSpec.Size = new System.Drawing.Size(1236, 418);
             this.grBoxAnimalSpec.TabIndex = 9;
             this.grBoxAnimalSpec.TabStop = false;
             this.grBoxAnimalSpec.Text = "Animal Specifications";
@@ -255,7 +255,7 @@
             // picBox
             // 
             this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picBox.Location = new System.Drawing.Point(902, 63);
+            this.picBox.Location = new System.Drawing.Point(821, 74);
             this.picBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(120, 129);
@@ -265,10 +265,10 @@
             // 
             // btnLoadPicture
             // 
-            this.btnLoadPicture.Location = new System.Drawing.Point(902, 266);
+            this.btnLoadPicture.Location = new System.Drawing.Point(821, 269);
             this.btnLoadPicture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLoadPicture.Name = "btnLoadPicture";
-            this.btnLoadPicture.Size = new System.Drawing.Size(182, 43);
+            this.btnLoadPicture.Size = new System.Drawing.Size(129, 43);
             this.btnLoadPicture.TabIndex = 17;
             this.btnLoadPicture.Text = "Load animal photo";
             this.btnLoadPicture.UseVisualStyleBackColor = true;
@@ -281,11 +281,11 @@
             this.grBoxAnimalSpecifications.Controls.Add(this.chBoxUnderQuarantine);
             this.grBoxAnimalSpecifications.Controls.Add(this.labDaysInGuarantie);
             this.grBoxAnimalSpecifications.Controls.Add(this.labNoOfTeeth);
-            this.grBoxAnimalSpecifications.Location = new System.Drawing.Point(28, 277);
+            this.grBoxAnimalSpecifications.Location = new System.Drawing.Point(28, 254);
             this.grBoxAnimalSpecifications.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grBoxAnimalSpecifications.Name = "grBoxAnimalSpecifications";
             this.grBoxAnimalSpecifications.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grBoxAnimalSpecifications.Size = new System.Drawing.Size(572, 154);
+            this.grBoxAnimalSpecifications.Size = new System.Drawing.Size(513, 147);
             this.grBoxAnimalSpecifications.TabIndex = 15;
             this.grBoxAnimalSpecifications.TabStop = false;
             this.grBoxAnimalSpecifications.Text = "Specifications";
@@ -302,7 +302,7 @@
             // texBoxDaysInQuarantine
             // 
             this.texBoxDaysInQuarantine.Enabled = false;
-            this.texBoxDaysInQuarantine.Location = new System.Drawing.Point(474, 105);
+            this.texBoxDaysInQuarantine.Location = new System.Drawing.Point(416, 103);
             this.texBoxDaysInQuarantine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.texBoxDaysInQuarantine.Name = "texBoxDaysInQuarantine";
             this.texBoxDaysInQuarantine.Size = new System.Drawing.Size(52, 26);
@@ -323,7 +323,7 @@
             // labDaysInGuarantie
             // 
             this.labDaysInGuarantie.AutoSize = true;
-            this.labDaysInGuarantie.Location = new System.Drawing.Point(248, 109);
+            this.labDaysInGuarantie.Location = new System.Drawing.Point(207, 111);
             this.labDaysInGuarantie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labDaysInGuarantie.Name = "labDaysInGuarantie";
             this.labDaysInGuarantie.Size = new System.Drawing.Size(172, 20);
@@ -364,7 +364,7 @@
             // 
             // labBxImportantInfo
             // 
-            this.labBxImportantInfo.Location = new System.Drawing.Point(1100, 63);
+            this.labBxImportantInfo.Location = new System.Drawing.Point(1006, 68);
             this.labBxImportantInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labBxImportantInfo.Multiline = true;
             this.labBxImportantInfo.Name = "labBxImportantInfo";
@@ -373,7 +373,7 @@
             // 
             // btnAddAnimal
             // 
-            this.btnAddAnimal.Location = new System.Drawing.Point(680, 348);
+            this.btnAddAnimal.Location = new System.Drawing.Point(563, 355);
             this.btnAddAnimal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddAnimal.Name = "btnAddAnimal";
             this.btnAddAnimal.Size = new System.Drawing.Size(200, 43);
@@ -396,7 +396,7 @@
             // 
             this.listbxAnimalSpecies.FormattingEnabled = true;
             this.listbxAnimalSpecies.ItemHeight = 20;
-            this.listbxAnimalSpecies.Location = new System.Drawing.Point(680, 63);
+            this.listbxAnimalSpecies.Location = new System.Drawing.Point(565, 63);
             this.listbxAnimalSpecies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listbxAnimalSpecies.Name = "listbxAnimalSpecies";
             this.listbxAnimalSpecies.Size = new System.Drawing.Size(198, 244);
@@ -407,7 +407,7 @@
             // 
             this.listBxCategori.FormattingEnabled = true;
             this.listBxCategori.ItemHeight = 20;
-            this.listBxCategori.Location = new System.Drawing.Point(400, 63);
+            this.listBxCategori.Location = new System.Drawing.Point(359, 63);
             this.listBxCategori.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBxCategori.Name = "listBxCategori";
             this.listBxCategori.Size = new System.Drawing.Size(198, 184);
@@ -442,7 +442,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1486, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1271, 35);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -463,33 +463,33 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.newToolStripMenuItem.Text = "New";
             // 
             // oppenToolStripMenuItem
             // 
             this.oppenToolStripMenuItem.Name = "oppenToolStripMenuItem";
-            this.oppenToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.oppenToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.oppenToolStripMenuItem.Text = "Oppen...";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // xMLToolStripMenuItem
             // 
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.xMLToolStripMenuItem.Text = "XML";
             // 
             // databaseToolStripMenuItem
@@ -498,27 +498,27 @@
             this.loadDataToolStripMenuItem,
             this.saveDataToolStripMenuItem});
             this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
-            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.databaseToolStripMenuItem.Text = "Database";
             // 
             // loadDataToolStripMenuItem
             // 
             this.loadDataToolStripMenuItem.Name = "loadDataToolStripMenuItem";
-            this.loadDataToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.loadDataToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
             this.loadDataToolStripMenuItem.Text = "Load Data";
             this.loadDataToolStripMenuItem.Click += new System.EventHandler(this.loadDataToolStripMenuItem_Click);
             // 
             // saveDataToolStripMenuItem
             // 
             this.saveDataToolStripMenuItem.Name = "saveDataToolStripMenuItem";
-            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
             this.saveDataToolStripMenuItem.Text = "Save Data";
             this.saveDataToolStripMenuItem.Click += new System.EventHandler(this.saveDataToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -543,7 +543,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1486, 1083);
+            this.ClientSize = new System.Drawing.Size(1271, 814);
             this.Controls.Add(this.grBoxAnimalSpec);
             this.Controls.Add(this.grBoxLitsResult);
             this.Controls.Add(this.menuStrip1);

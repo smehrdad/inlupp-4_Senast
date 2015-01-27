@@ -58,7 +58,7 @@ namespace AnimalMotel
 
 
 
-        private Mammal AddNewSpecifications(Mammal animalObj, int daysOfQuarantine, bool underQuarantine, int numberOfteeth)
+        public Mammal AddNewSpecifications(Mammal animalObj, int daysOfQuarantine, bool underQuarantine, int numberOfteeth)
         {
             animalObj.DagInQuantine = daysOfQuarantine;
             animalObj.AnimalIsUnderQuarantine = underQuarantine;
